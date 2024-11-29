@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!-- la terjeta card-->
+        <div class="card"> <!-- tarjeta -->
+            <div class="card-body">
+                <form action="/editarPagos/" method="POST"> {% csrf_token %} <!-- formulario-->
+                    
+                    <div class="form-roup">
+                        <input type="text" id="txtid_pago" name="txtid_pago" class="form-control"
+                        value="{{mispagos.id_pago}}" minLenght="6" maxLenght="6" readonly required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtid_cita" name="txtid_cita" class="form-control"
+                        value="{{mispagos.id_cita}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtmonto" name="txtmonto" class="form-control"
+                        value="{{mispagos.monto}}"  maxLenght="100" required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="date" id="txtfecha_pago" name="txtfecha_pago" class="form-control"
+                        value="{{mispagos.fecha_pago|date:'Y-m-d'}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtmetodo_pago" name="txtmetodo_pago" class="form-control"
+                        value="{{mispagos.metodo_pago}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtestado_pago" name="txtestado_pago" class="form-control"
+                        value="{{mispagos.estado_pago}}"  maxLenght="10" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtid_cliente" name="txtid_cliente" class="form-control"
+                        value="{{mispagos.id_cliente}}"  maxLenght="6" required>
+                    </div>
+                    
+                    <div class="form-roup py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form><!-- formulario-->
+            </div>
+        </div>
+        <!-- la terjeta card-->
+    </div><!-- columna -->
+</div><!-- la fila -->
+{% endblock %}

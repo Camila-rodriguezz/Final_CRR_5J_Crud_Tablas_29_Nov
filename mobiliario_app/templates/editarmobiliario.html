@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!-- la terjeta card-->
+        <div class="card"> <!-- tarjeta -->
+            <div class="card-body">
+                <form action="/editarMobiliario/" method="POST"> {% csrf_token %} <!-- formulario-->
+                    
+                    <div class="form-roup">
+                        <input type="text" id="txtid_mobiliario" name="txtid_mobiliario" class="form-control"
+                        value="{{mimobiliario.id_mobiliario}}" minLenght="6" maxLenght="6" readonly required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control"
+                        value="{{mimobiliario.descripcion}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtcantidad" name="txtcantidad" class="form-control"
+                        value="{{mimobiliario.cantidad}}"  maxLenght="100" required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtcosto" name="txtcosto" class="form-control"
+                        value="{{mimobiliario.costo}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="date" id="txtfecha_compra" name="txtfecha_compra" class="form-control"
+                        value="{{mimobiliario.fecha_compra|date:'Y-m-d'}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtestado" name="txtestado" class="form-control"
+                        value="{{mimobiliario.estado}}"  maxLenght="10" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtsucursales" name="txtsucursales" class="form-control"
+                        value="{{mimobiliario.id_sucursales}}"  maxLenght="6" required>
+                    </div>
+                    
+                    <div class="form-roup py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form><!-- formulario-->
+            </div>
+        </div>
+        <!-- la terjeta card-->
+    </div><!-- columna -->
+</div><!-- la fila -->
+{% endblock %}

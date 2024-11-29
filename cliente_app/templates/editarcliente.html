@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!-- la terjeta card-->
+        <div class="card"> <!-- tarjeta -->
+            <div class="card-body">
+                <form action="/editarClientes/" method="POST"> {% csrf_token %} <!-- formulario-->
+                    
+                    <div class="form-roup">
+                        <input type="text" id="txtid_cliente" name="txtid_cliente" class="form-control"
+                        value="{{misclientes.id_cliente}}" minLenght="6" maxLenght="6" readonly required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                        value="{{misclientes.nombre}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+                        value="{{misclientes.telefono}}"  maxLenght="100" required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtemail" name="txtemail" class="form-control"
+                        value="{{misclientes.email}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                        value="{{misclientes.direccion}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="date" id="txtfecha_registro" name="txtfecha_registro" class="form-control"
+                        value="{{misclientes.fecha_registro|date:'Y-m-d'}}"  maxLenght="10" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtcomentarios" name="txtcomentarios" class="form-control"
+                        value="{{misclientes.comentarios}}"  maxLenght="6" required>
+                    </div>
+                    
+                    <div class="form-roup py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form><!-- formulario-->
+            </div>
+        </div>
+        <!-- la terjeta card-->
+    </div><!-- columna -->
+</div><!-- la fila -->
+{% endblock %}

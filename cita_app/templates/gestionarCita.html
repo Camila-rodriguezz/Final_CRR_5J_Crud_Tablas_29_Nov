@@ -1,0 +1,87 @@
+{% extends "base.html"%}
+{% load static %}
+{% block cuerpo  %}
+<div class="row"><!-- la fila-->
+
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda-->
+    <h1>registros</h1>
+    <div class="card"> <!-- tarjeta -->
+        <div class="card-body">
+            <form action="/registrarCita/" method="POST"> {% csrf_token %} <!-- formulario-->
+                <div class="form-roup">
+                    <input type="text" id="txtid_cita" name="txtid_cita" class="form-control"
+                    placeholder="Id cita" minLenght="6" maxLenght="6" required>
+                </div>
+                <div class="form-roup py-3">
+                    <input type="date" id="txtfecha_cita" name="txtfecha_cita" class="form-control"
+                    placeholder="Fecha"  maxLenght="100" required>
+                </div>
+                <div class="form-roup py-3">
+                    <input type="text" id="txthora_cita" name="txthora_cita" class="form-control"
+                    placeholder="Hora"  maxLenght="100" required>
+                </div>
+                <div class="form-roup py-3">
+                    <input type="text" id="txtid_cliente" name="txtid_cliente" class="form-control"
+                    placeholder="Id del cliente"  maxLenght="100" required>
+                </div>
+                <div class="form-roup py-3">
+                    <input type="text" id="txtid_empleado" name="txtid_empleado" class="form-control"
+                    placeholder="Id del Empleado"  maxLenght="100" required>
+                </div>
+                <div class="form-roup py-3">
+                    <input type="text" id="txtservicio" name="txtservicio" class="form-control"
+                    placeholder="Servicio"  maxLenght="10" required>
+                </div>
+                <div class="form-roup py-3">
+                    <input type="text" id="txtestado" name="txtestado" class="form-control"
+                    placeholder="Estado"  maxLenght="100" required>
+                </div>
+                <div class="form-roup py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!-- formulario-->
+        </div>
+    </div><!-- tarjeta -->
+</div><!-- columna izquierda-->
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!-- columna derecha-->
+    <h1>Citas</h1>
+    <img class="w-50" src="{% static 'img/citas.jpg' %}" alt="rodriguez" width="400" height="400">
+<div class="table-responsive"><!-- tabla responsiva-->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id Cita</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Id del cliente</th>
+            <th scope="col">Id del empleado</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Estado</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for m in miscitas %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{m.id_cita}}</td>
+                <td>{{m.fecha_cita}}</td>
+                <td>{{m.hora_cita}}</td>
+                <td>{{m.id_cliente}}</td>
+                <td>{{m.id_empleado}}</td>
+                <td>{{m.servicio}}</td>
+                <td>{{m.estado}}</td>
+                <td>  <a href="seleccionarCita/{{m.id_cita}}" class="btn btn-success">Editar</a> </td>  
+                <td>  <a href="borrarCita/{{m.id_cita}}" class="btn btn-danger">Borrar</a> </td> 
+            </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
+</div><!-- tabla responsiva-->
+</div><!-- columna derecha-->
+
+</div><!-- la fila-->
+    {% endblock %}

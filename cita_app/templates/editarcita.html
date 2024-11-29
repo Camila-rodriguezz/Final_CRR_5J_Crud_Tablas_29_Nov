@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!-- la terjeta card-->
+        <div class="card"> <!-- tarjeta -->
+            <div class="card-body">
+                <form action="/editarCita/" method="POST"> {% csrf_token %} <!-- formulario-->
+                    
+                    <div class="form-roup">
+                        <input type="text" id="txtid_cita" name="txtid_cita" class="form-control"
+                        value="{{miscitas.id_cita}}" minLenght="6" maxLenght="6" readonly required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="date" id="txtfecha_cita" name="txtfecha_cita" class="form-control"
+                        value="{{miscitas.fecha_cita|date:'Y-m-d'}}" maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txthora_cita" name="txthora_cita" class="form-control"
+                        value="{{miscitas.hora_cita}}"  maxLenght="100" required>
+                    </div>
+                    
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtid_cliente" name="txtid_cliente" class="form-control"
+                        value="{{miscitas.id_cliente}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtid_empleado" name="txtid_empleado" class="form-control"
+                        value="{{miscitas.id_empleado}}"  maxLenght="100" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtservicio" name="txtservicio" class="form-control"
+                        value="{{miscitas.servicio}}"  maxLenght="10" required>
+                    </div>
+
+                    <div class="form-roup py-3">
+                        <input type="text" id="txtestado" name="txtestado" class="form-control"
+                        value="{{miscitas.estado}}"  maxLenght="6" required>
+                    </div>
+                    
+                    <div class="form-roup py-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form><!-- formulario-->
+            </div>
+        </div>
+        <!-- la terjeta card-->
+    </div><!-- columna -->
+</div><!-- la fila -->
+{% endblock %}
